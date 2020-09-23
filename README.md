@@ -17,7 +17,7 @@ If you have:
 And you run the following command on your laptop:
 
 ```bash
-ssh -tR 9001:localhost:8080 example.com sirtunnel.py sub1.example.com:9001
+ssh -tR 9001:localhost:8080 example.com sirtunnel.py sub1.example.com 9001
 ```
 
 Now any requests to `https://sub.example.com` will be proxied to your local
@@ -30,8 +30,8 @@ The command above does 2 things:
 
 1. It starts a standard [remote SSH tunnel][2] from the server port 9001 to
    local port 8080.
-2. It runs the command `sirtunnel.py sub1.example.com:9001` on the server.
-   The python script parses `sub1.example.com:9001` and uses the Caddy API to
+2. It runs the command `sirtunnel.py sub1.example.com 9001` on the server.
+   The python script parses `sub1.example.com 9001` and uses the Caddy API to
    reverse proxy `sub1.example.com` to port 9001 on the server. Caddy
    automatically retrieves an HTTPS cert for `sub1.example.com`.
 

@@ -8,8 +8,9 @@ from urllib import request
 
 if __name__ == '__main__':
 
-    tunnel_id = sys.argv[1]
-    host, port = tunnel_id.split(':')
+    host = sys.argv[1]
+    port = sys.argv[2]
+    tunnel_id = host + '-' + port
 
     caddy_add_route_request = {
         "@id": tunnel_id,
