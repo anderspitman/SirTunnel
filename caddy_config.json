@@ -1,0 +1,13 @@
+{
+  "apps": {
+    "http": {
+      "servers": {
+        "sirtunnel": {
+          "listen": [":443"],
+          "routes": [
+          ]
+        }
+      }
+    }
+  }
+}
