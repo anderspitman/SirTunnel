@@ -15,7 +15,3 @@ rm README.md
 
 echo Enable Caddy to bind low ports
 sudo setcap 'cap_net_bind_service=+ep' caddy
-
-echo Download sirtunnel binary
-curl -s -O -L https://github.com/anderspitman/SirTunnel/releases/download/${sirtunnelVersion}/sirtunnel
-chmod +x sirtunnel
