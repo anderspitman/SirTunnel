@@ -58,10 +58,10 @@ The main advantages of SirTunnel are:
 * Essentially stateless. The only state is the certs (which is handled entirely
   by Caddy) and the tunnel mappings, which are ephemeral and controlled by the
   clients.
-* No special client is required. You can use any standard SSH client that
-  supports remote tunnels.
 * Automatic HTTPS certificate management. Some other solutions do this as well,
   so it's important but not unique.
+* No special client is required. You can use any standard SSH client that
+  supports remote tunnels. Again, this is not a unique feature.
 
 
 # Running the server
