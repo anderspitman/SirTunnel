@@ -8,7 +8,8 @@ allows you to easily do that.
 
 If you have:
 
-* A SirTunnel server instance listening on port 443 of `example.com`.
+* A SirTunnel [server instance](#running-the-server) listening on port 443 of
+  `example.com`.
 * A copy of the sirtunnel.py script available on the PATH of the server.
 * An SSH server running on port 22 of `example.com`.
 * A webserver running on port 8080 of your laptop.
@@ -61,6 +62,20 @@ The main advantages of SirTunnel are:
   supports remote tunnels.
 * Automatic HTTPS certificate management. Some other solutions do this as well,
   so it's important but not unique.
+
+
+# Running the server
+
+Assuming you already have an ssh server running, getting the SirTunnel server
+going consists of simply downloading a copy of Caddy and running it with the
+provided config. Take a look at [`install.sh`](./install.sh) and
+[`run_server.sh`](./run_server.sh) for details.
+
+**Note:** Caddy needs to bind to port 443, either by running as root (not
+recommended), setting the `CAP_NET_BIND_SERVICE` capability on the Caddy binary
+(what the `install.sh` script does), or changing `caddy_config.json` to bind
+to a different port (say 9000) and using something like iptables to forward
+to that port.
 
 
 
