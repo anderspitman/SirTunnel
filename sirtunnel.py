@@ -29,7 +29,7 @@ if __name__ == '__main__':
     headers = {
         'Content-Type': 'application/json'
     }
-    create_url = 'http://127.0.0.1:2019/config/apps/http/servers/sirtunnel/routes'
+    create_url = 'http://127.0.0.1:2019/config/apps/http/servers/boreman/routes'
     req = request.Request(method='POST', url=create_url, headers=headers)
     request.urlopen(req, body)
 

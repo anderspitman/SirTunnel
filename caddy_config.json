@@ -2,9 +2,26 @@
   "apps": {
     "http": {
       "servers": {
-        "sirtunnel": {
+        "boreman": {
           "listen": [":443"],
           "routes": [
+            {
+              "match": [
+                {
+                  "host": ["anders.webstreams.io"]
+                }
+              ],
+              "handle": [
+                {
+                  "handler": "reverse_proxy",
+                  "upstreams": [
+                    {
+                      "dial": ":9001"
+                    }
+                  ]
+                }
+              ]
+            }
           ]
         }
       }
