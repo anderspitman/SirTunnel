@@ -8,7 +8,6 @@ import (
 	"crypto/tls"
         "io"
         "sync"
-        "errors"
         "strconv"
         "encoding/json"
 )
@@ -189,74 +188,4 @@ func (p *BoringProxy) handleTunnelConnection(decryptedConn net.Conn, serverName 
         }()
 
         wg.Wait()
-}
-
-
-type TunnelManager struct {
-        tunnels map[string]int
-        mutex *sync.Mutex
-}
-
-func NewTunnelManager() *TunnelManager {
-        tunnels := make(map[string]int)
-        mutex := &sync.Mutex{}
-        return &TunnelManager{tunnels, mutex}
-}
-
-func (m *TunnelManager) SetTunnel(host string, port int) {
-        m.mutex.Lock()
-        m.tunnels[host] = port
-        m.mutex.Unlock()
-}
-
-func (m *TunnelManager) DeleteTunnel(host string) {
-        m.mutex.Lock()
-        delete(m.tunnels, host)
-        m.mutex.Unlock()
-}
-
-func (m *TunnelManager) GetPort(serverName string) (int, error) {
-        m.mutex.Lock()
-        port, exists := m.tunnels[serverName]
-        m.mutex.Unlock()
-
-        if !exists {
-                return 0, errors.New("Doesn't exist")
-        }
-
-        return port, nil
-}
-
-
-type AdminListener struct {
-        connChan chan(net.Conn)
-}
-
-func NewAdminListener() *AdminListener {
-        connChan := make(chan(net.Conn))
-        return &AdminListener{connChan}
-}
-
-// implement net.Listener
-func (l *AdminListener) Accept() (net.Conn, error) {
-        // TODO: error conditions?
-        conn := <-l.connChan
-        return conn, nil
-}
-func (l *AdminListener) Close() error {
-        // TODO
-        fmt.Println("AdminListener Close")
-        return nil
-}
-func (l *AdminListener) Addr() net.Addr {
-        // TODO
-        fmt.Println("AdminListener Addr")
-        return nil
-}
-
-func main() {
-        log.Println("Starting up")
-
-        proxy := NewBoringProxy()
-        proxy.Run()
 }
