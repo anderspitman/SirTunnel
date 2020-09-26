@@ -58,6 +58,8 @@ func (p *BoringProxy) handleAdminRequest(w http.ResponseWriter, r *http.Request)
 func (p *BoringProxy) handleTunnels(w http.ResponseWriter, r *http.Request) {
         fmt.Println("handleTunnels")
 
+        query := r.URL.Query()
+
         if r.Method == "GET" {
                 body, err := json.Marshal(p.tunMan.tunnels)
                 if err != nil {
@@ -68,6 +70,15 @@ func (p *BoringProxy) handleTunnels(w http.ResponseWriter, r *http.Request) {
                 w.Write([]byte(body))
         } else if r.Method == "POST" {
                 p.handleCreateTunnel(w, r)
+        } else if r.Method == "DELETE" {
+                if len(query["host"]) != 1 {
+                        w.WriteHeader(400)
+                        w.Write([]byte("Invalid host parameter"))
+                        return
+                }
+                host := query["host"][0]
+
+                p.tunMan.DeleteTunnel(host)
         }
 }
 
@@ -195,6 +206,12 @@ func NewTunnelManager() *TunnelManager {
 func (m *TunnelManager) SetTunnel(host string, port int) {
         m.mutex.Lock()
         m.tunnels[host] = port
+        m.mutex.Unlock()
+}
+
+func (m *TunnelManager) DeleteTunnel(host string) {
+        m.mutex.Lock()
+        delete(m.tunnels, host)
         m.mutex.Unlock()
 }
 
