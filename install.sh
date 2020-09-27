@@ -1,7 +1,6 @@
 #/bin/bash
 
 caddyVersion=2.1.1
-sirtunnelVersion=0.1.0
 
 echo Download Caddy
 caddyGz=caddy_${caddyVersion}_linux_amd64.tar.gz
