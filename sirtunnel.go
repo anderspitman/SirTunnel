@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"os"
 	"os/signal"
-	"strings"
 	"net/http"
 	"bytes"
 )
@@ -13,10 +12,9 @@ import (
 func main() {
 
 	args := os.Args[1:]
-	tunnelSpecParts := strings.Split(args[0], ":")
-	tunnelId := args[0]
-	host := tunnelSpecParts[0]
-	port := tunnelSpecParts[1]
+	host := args[0]
+	port := args[1]
+        tunnelId := host + "-" + port
 
 	client := &http.Client{}
 
