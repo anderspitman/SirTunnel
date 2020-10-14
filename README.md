@@ -20,7 +20,7 @@ And you run the following command on your laptop:
 ssh -tR 9001:localhost:8080 example.com sirtunnel.py sub1.example.com 9001
 ```
 
-Now any requests to `https://sub.example.com` will be proxied to your local
+Now any requests to `https://sub1.example.com` will be proxied to your local
 webserver.
 
 
