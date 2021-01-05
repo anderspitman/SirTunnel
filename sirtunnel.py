@@ -16,7 +16,7 @@ def delete(tunnel_id, caddy_api):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser("SirTunnel", description="An easy way to securely expose a webserver running on one computer via a public URL")
     parser.add_argument("--replace", action="store_true", help="Replace the domain if already part of the routes")
-    parser.add_argument("--no-duplicates", action="store_true", help="Replace the domain if already part of the routes")
+    parser.add_argument("--no-duplicates", action="store_true", help="Don't allow duplicate; either abort or replace depending on --replace")
     parser.add_argument("--check-availability", action="store_true", help="Checks that port or domaine might already be in use")
     parser.add_argument("--debug", action="store_true", help="Additional logs")
     parser.add_argument("--check", action="store_true", help="Check each second whether entry still exists")
