@@ -17,7 +17,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser("SirTunnel", description="An easy way to securely expose a webserver running on one computer via a public URL")
     parser.add_argument("--replace", action="store_true", help="Replace the domain if already part of the routes")
     parser.add_argument("--no-duplicates", action="store_true", help="Don't allow duplicate; either abort or replace depending on --replace")
-    parser.add_argument("--check-availability", action="store_true", help="Checks that port or domaine might already be in use")
+    parser.add_argument("--check-availability", action="store_true", help="Checks that port or domain might already be in use")
     parser.add_argument("--debug", action="store_true", help="Additional logs")
     parser.add_argument("--check", action="store_true", help="Check each second whether entry still exists")
     parser.add_argument("--caddy-api", default="http://127.0.0.1:2019", help="Caddy's admin api")
@@ -44,7 +44,7 @@ if __name__ == '__main__':
         'Content-Type': 'application/json'
     }
     if not args.check_availability:
-        LOGGER.warn("Skipping checks that domain might already be in use")
+        LOGGER.warning("Skipping checks that domain might already be in use")
     else:
         LOGGER.info("Checking domain and ports availability")
         req = request.Request(method='GET', url="{}/config/apps/http/servers/sirtunnel/routes".format(caddy_api), headers=headers)
