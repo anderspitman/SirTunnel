@@ -77,6 +77,14 @@ recommended), setting the `CAP_NET_BIND_SERVICE` capability on the Caddy binary
 to a different port (say 9000) and using something like iptables to forward
 to that port.
 
+# Contributions
+
+SirTunnel is intended to be a minimal tool. As such, I'm unlikely to add many
+features moving forward. However, the simplicity makes it easier to modify
+for your needs. For example, see this fork which adds functionality to help
+multiple users avoid overwriting each others' tunnels:
+
+https://github.com/matiboy/SirTunnel
 
 
 [0]: https://github.com/anderspitman/awesome-tunneling
