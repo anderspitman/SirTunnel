@@ -77,7 +77,7 @@ recommended), setting the `CAP_NET_BIND_SERVICE` capability on the Caddy binary
 to a different port (say 9000) and using something like iptables to forward
 to that port.
 
-# Contributions
+# Future Features
 
 SirTunnel is intended to be a minimal tool. As such, I'm unlikely to add many
 features moving forward. However, the simplicity makes it easier to modify
