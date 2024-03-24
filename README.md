@@ -81,7 +81,8 @@ to that port.
 
 SirTunnel is intended to be a minimal tool. As such, I'm unlikely to add many
 features moving forward. However, the simplicity makes it easier to modify
-for your needs. Maybe one of the forks below has what you need:
+for your needs. If you find a feature missing, maybe one of the forks below
+has what you need or gives you some ideas:
 
 * https://github.com/matiboy/SirTunnel adds functionality to help multiple
   users avoid overwriting each others' tunnels.
