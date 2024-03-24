@@ -81,10 +81,12 @@ to that port.
 
 SirTunnel is intended to be a minimal tool. As such, I'm unlikely to add many
 features moving forward. However, the simplicity makes it easier to modify
-for your needs. For example, see this fork which adds functionality to help
-multiple users avoid overwriting each others' tunnels:
+for your needs. Maybe one of the forks below has what you need:
 
-https://github.com/matiboy/SirTunnel
+* https://github.com/matiboy/SirTunnel adds functionality to help multiple
+  users avoid overwriting each others' tunnels.
+* https://github.com/daps94/SirTunnel implements tunnel checking and auto
+  cleanup to address issue with stale tunnels.
 
 
 [0]: https://github.com/anderspitman/awesome-tunneling
